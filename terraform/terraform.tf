@@ -1,7 +1,7 @@
 terraform {
   required_version = "~> 1.0"
   backend "s3" {
-    bucket = "infrabucket-eksgitops-eu-west-2"
+    bucket = "infrabucket-eksgitops-eu-west-2" #change bucket name
     key    = "gitops-actions/state.tfstate"
     region = "eu-west-2"
   }
