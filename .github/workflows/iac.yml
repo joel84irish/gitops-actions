@@ -18,7 +18,7 @@ env:
   AWS_REGION: ${{ vars.AWS_REGION }}
   EKS_CLUSTER: ${{ vars.EKS_CLUSTER }} 
 
-# Define Jobs
+# Define Job
 jobs:
   terraform:
     name: "Deploy Infra with Terraform on AWS"
