@@ -101,6 +101,10 @@ jobs:
           name: tfplan-json
           path: terraform/tfplan.json
 
+      
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan.binary
+
   destroy:
     name: "Destroy Infra on AWS"
     runs-on: ubuntu-latest
