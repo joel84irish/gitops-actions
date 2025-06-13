@@ -2,8 +2,8 @@
 data "aws_availability_zones" "azs" {}
 
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.0"
+  source  = "github.com/terraform-aws-modules/terraform-aws-vpc//?ref=7c1f791"
+  version = "~> 5.21"
 
   name = var.name
   cidr = var.vpc_cidr_block
@@ -27,14 +27,13 @@ module "vpc" {
   tags = var.tags
 }
 
-# EKS Cluster
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.2"
+  source  = "github.com/terraform-aws-modules/terraform-aws-eks//?ref=d2b1f3b"
+  version = "~> 20.31"
 
-  cluster_name                   = var.name
-  cluster_version                = var.k8s_version
-  cluster_endpoint_public_access = true
+  cluster_name                    = var.name
+  cluster_version                 = var.k8s_version
+  cluster_endpoint_public_access  = true
 
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
@@ -69,8 +68,8 @@ module "eks" {
 }
 
 module "ecr" {
-  source  = "terraform-aws-modules/ecr/aws"
-  version = "2.3.0"
+  source  = "github.com/terraform-aws-modules/terraform-aws-ecr//?ref=841b3c7"
+  version = "~> 2.3"
 
   repository_name    = var.ecr_repo
   registry_scan_type = "BASIC"
