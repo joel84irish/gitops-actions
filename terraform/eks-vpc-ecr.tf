@@ -2,7 +2,8 @@
 data "aws_availability_zones" "azs" {}
 
 module "vpc" {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=7c1f791"
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "5.21.0"
 
   name = var.name
   cidr = var.vpc_cidr_block
@@ -27,7 +28,9 @@ module "vpc" {
 }
 
 module "eks" {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=d2b1f3b"
+  source  = "terraform-aws-modules/eks/aws"
+  version = "~> 20.31"
+
 
   cluster_name                   = var.name
   cluster_version                = var.k8s_version
@@ -66,7 +69,8 @@ module "eks" {
 }
 
 module "ecr" {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-ecr.git?ref=841b3c7"
+  source  = "terraform-aws-modules/ecr/aws"
+  version = "2.4.0"
 
   repository_name    = var.ecr_repo
   registry_scan_type = "BASIC"
