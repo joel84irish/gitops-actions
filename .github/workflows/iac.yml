@@ -48,7 +48,7 @@ jobs:
         with:
           reporter: github-pr-review  # or github-check for inline check annotations
           filter_mode: file
-          fail_level: false        # Preferred over `continue_on_error`
+             
 
       - name: Run Checkov
         uses: bridgecrewio/checkov-action@v12
