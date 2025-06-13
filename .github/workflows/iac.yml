@@ -67,7 +67,7 @@ jobs:
         terraform show -json tfplan.binary > tfplan.json
 
     - name: Infracost Breakdown
-      uses: infracost/infracost-gh-action@v3
+      uses: infracost/infracost-gh-action@v2
       with:
         path: .
         terraform-plan-json: tfplan.json
