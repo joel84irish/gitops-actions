@@ -8,7 +8,7 @@ on:
       - iac-gitops
     paths:  
       - terraform/**
-      - iac-gitops/**
+      - .github/workflows/**
   workflow_dispatch: # Enables manual trigger for destroy job
 
 # Environment Variables
